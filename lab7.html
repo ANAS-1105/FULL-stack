@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Git Version Control</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #43cea2, #185a9d);
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            background: #fff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 6px;
+            background: #185a9d;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #43cea2;
+        }
+        .output {
+            margin-top: 15px;
+            padding: 12px;
+            background: #f4f4f4;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        @media (max-width: 600px) {
+            .container {
+                margin: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Version Control using Git</h1>
+    <p>
+        Click the buttons below to understand Git operations using
+        <strong>:contentReference[oaicite:0]{index=0}</strong>.
+    </p>
+
+    <button onclick="show('git init')">Create Repository</button>
+    <button onclick="show('git commit -m \"First commit\"')">Commit</button>
+    <button onclick="show('git push origin main')">Push</button>
+    <button onclick="show('git pull origin main')">Pull</button>
+    <button onclick="show('git checkout -b feature-branch')">Create Branch</button>
+    <button onclick="show('git merge feature-branch')">Merge Branch</button>
+
+    <div class="output" id="output">
+        Click a button to see the Git command
+    </div>
+</div>
+
+<script>
+    function show(command) {
+        document.getElementById("output").innerText =
+            "Command executed:\n" + command;
+    }
+</script>
+
+</body>
+</html>

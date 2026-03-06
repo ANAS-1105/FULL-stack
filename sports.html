@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Football Jersey Store</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+body{
+    background:#f5f7fa;
+}
+
+/* Header */
+header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 40px;
+    background:#111827;
+}
+
+.logo{
+    color:#ffffff;
+    font-size:24px;
+    font-weight:bold;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+    gap:20px;
+}
+
+nav ul li{
+    color:white;
+    padding:8px 16px;
+    border-radius:20px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+nav ul li:hover{
+    background:#2563eb;
+    transform:scale(1.1);
+}
+
+nav ul li:active{
+    background:#1d4ed8;
+}
+
+/* Hero */
+.hero{
+    text-align:center;
+    padding:50px 20px;
+}
+
+.hero h1{
+    font-size:40px;
+    color:#1f2937;
+}
+
+.hero p{
+    margin-top:10px;
+    font-size:18px;
+    color:#555;
+}
+
+/* Jerseys */
+.jerseys{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+    padding:40px;
+}
+
+.card{
+    background:white;
+    border-radius:15px;
+    padding:15px;
+    text-align:center;
+    box-shadow:0 6px 15px rgba(0,0,0,0.1);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    border-radius:10px;
+}
+
+.card h3{
+    margin-top:10px;
+    color:#1f2937;
+}
+
+.price{
+    margin-top:5px;
+    font-size:18px;
+    font-weight:bold;
+    color:#2563eb;
+}
+
+/* Trust Section */
+.trust{
+    background:#111827;
+    color:white;
+    padding:30px 20px;
+    text-align:center;
+}
+
+.trust p{
+    margin:8px 0;
+    font-size:16px;
+}
+
+/* Footer */
+footer{
+    text-align:center;
+    padding:12px;
+    background:#0f172a;
+    color:#cbd5f5;
+}
+
+/* Responsive */
+@media(max-width:600px){
+    header{
+        flex-direction:column;
+        gap:10px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">⚽ Jersey Store</div>
+    <nav>
+        <ul>
+            <li>Home</li>
+            <li>Leagues</li>
+            <li>Orders</li>
+            <li>Help</li>
+        </ul>
+    </nav>
+</header>
+
+<section class="hero">
+    <h1>Official Football Jerseys</h1>
+    <p>Top Clubs • Best Quality • Fair Prices</p>
+</section>
+
+<section class="jerseys">
+
+    <div class="card">
+        <img src="https://i.pinimg.com/736x/74/5f/10/745f109e9038bd939f1b714e1ff4255b.jpg">
+        <h3>Real Madrid (La Liga)</h3>
+        <div class="price">From $20.99</div>
+    </div>
+
+    <div class="card">
+        <img src="https://i.pinimg.com/736x/7d/6d/01/7d6d01a77ec29b9ca963bef72d83f799.jpg">
+        <h3>Manchester United (Premier League)</h3>
+        <div class="price">From $5.99</div>
+    </div>
+
+    <div class="card">
+        <img src="https://i.pinimg.com/736x/cc/af/6e/ccaf6e3853d908d3a14708e69a2ef82d.jpg">
+        <h3>Barcelona (La Liga)</h3>
+        <div class="price">From $15.99</div>
+    </div>
+
+    <div class="card">
+        <img src="https://i.pinimg.com/1200x/7d/9b/c9/7d9bc96dd96c24844abfa3d288e781c4.jpg">
+        <h3>Man City (Serie A)</h3>
+        <div class="price">From $11.99</div>
+    </div>
+
+</section>
+
+<section class="trust">
+    <p>✔ 100% Authentic Jerseys</p>
+    <p>✔ Secure Payments & Fast Delivery</p>
+    <p>✔ Trusted by Thousands of Football Fans</p>
+</section>
+
+<footer>
+    © 2026 Football Jersey Store. All Rights Reserved.
+</footer>
+
+</body>
+</html>

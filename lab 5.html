@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mouse Events</title>
+  <style>
+    body {
+      background-color: #539bdb;
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    .block {
+      background-color: white;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    button {
+      padding: 8px;
+      border-radius: 4px;
+      border: none;
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Mouse & Window Events</h1>
+
+<!-- onclick -->
+<div class="block">
+  <h3>onclick</h3>
+  <button onclick="alert('Clicked!')">Click Me</button>
+</div>
+
+<!-- onmouseover / onmouseout -->
+<div class="block">
+  <h3>onmouseover / onmouseout</h3>
+  <p onmouseover="this.style.color='white'; this.style.backgroundColor='#4CAF50'"
+     onmouseout="this.style.color='black'; this.style.backgroundColor='transparent'">
+     Hover over me
+  </p>
+</div>
+
+<!-- onload -->
+<p id="onloadMsg" class="block"><strong>onload:</strong> Check this text after loading.</p>
+<script>
+  window.onload = function () {
+    document.getElementById("onloadMsg").textContent = "Page loaded!";
+  };
+</script>
+
+<!-- onbeforeprint / onafterprint -->
+<script>
+  window.onbeforeprint = () => alert("Preparing to print...");
+  window.onafterprint = () => alert("Finished printing.");
+</script>
+
+<!-- window.print -->
+<div class="block">
+  <h3>window.print</h3>
+  <button onclick="window.print()">Print This Page</button>
+</div>
+
+<!-- document.write -->
+<div class="block">
+  <h3>document.write</h3>
+  <script>
+    document.write("<p>HELLO EVERYONE</p>");
+  </script>
+</div>
+
+<!-- onpopstate -->
+<div class="block">
+  <h3>onpopstate</h3>
+  <button onclick="history.pushState({}, '', '?x=' + Date.now())">
+    Push new state
+  </button>
+</div>
+<script>
+  window.onpopstate = () => alert("popstate triggered");
+</script>
+
+<!-- onhashchange -->
+<div class="block">
+  <h3>onhashchange</h3>
+  <button onclick="location.hash = 'section' + Math.floor(Math.random()*10)">
+    Change hash
+  </button>
+</div>
+<script>
+  window.onhashchange = () => alert("Hash changed: " + location.hash);
+</script>
+
+<!-- ononline / onoffline -->
+<script>
+  window.ononline = () => alert("Back online!");
+  window.onoffline = () => alert("You're offline!");
+</script>
+
+<!-- oncontextmenu -->
+<div class="block">
+  <h3>oncontextmenu</h3>
+  <p oncontextmenu="alert('Right click disabled'); return false;">
+    Try right-clicking here
+  </p>
+</div>
+
+</body>
+</html>

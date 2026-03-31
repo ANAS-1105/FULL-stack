@@ -1,59 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Form & Input Events</title>
-  <link rel="stylesheet" href="./style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TECH assesment - 3 </title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+body {
+    font-family: Arial;
+    background: linear-gradient(to right, #0f9b0f, #000000);
+    color: white;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: flex-end;
+    padding: 15px;
+    background: rgba(0,0,0,0.8);
+}
+
+.navbar a {
+    margin-left: 20px;
+    cursor: pointer;
+    text-decoration: none;
+    color: #00ff88;
+    font-weight: bold;
+}
+
+.navbar a:hover {
+    color: #fff;
+}
+
+/* Pages */
+.page {
+    display: none;
+    max-width: 420px;
+    margin: 60px auto;
+    background: rgba(0,0,0,0.7);
+    padding: 25px;
+    border-radius: 10px;
+}
+
+.active {
+    display: block;
+}
+
+/* Dashboard cards */
+.card {
+    background: #111;
+    color: #00ff88;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Buttons */
+.btn-primary {
+    background: #00ff88;
+    border: none;
+    color: black;
+}
+
+.btn-dark {
+    background: black;
+}
+
+h1, h2 {
+    text-align: center;
+}
+</style>
 </head>
 <body>
 
-<h1>Form & Input Events</h1>
-
-<!-- onchange -->
-<div class="block">
-  <h3>onchange (Dropdown)</h3>
-  <select onchange="alert('Changed!')">
-    <option value="">vivo</option>
-    <option>iphone</option>
-    <option>samsung</option>
-  </select>
+<!-- NAVBAR -->
+<div class="navbar">
+    <a onclick="showPage('register')">Register</a>
+    <a onclick="showPage('login')">Login</a>
+    <a onclick="showPage('dashboard')">Dashboard</a>
+    <a onclick="showPage('dom')">DOM</a>
 </div>
 
-<!-- oninput / onchange -->
-<div class="block">
-  <h3>oninput / onchange (Text)</h3>
-  <input type="text" 
-         oninput="console.log('Input changed')" 
-         onchange="alert('Value finalized')" 
-         placeholder="write here">
+<!-- REGISTER -->
+<div id="register" class="page active">
+    <h2>⚽ Join Football Club</h2>
+    <input type="text" id="regName" class="form-control mb-2" placeholder="Player Name">
+    <input type="email" id="regEmail" class="form-control mb-2" placeholder="Email">
+    <input type="password" id="regPass" class="form-control mb-2" placeholder="Password">
+    <p id="regError" class="text-danger"></p>
+    <button class="btn btn-primary w-100" onclick="register()">Register</button>
 </div>
 
-<!-- oninvalid / onsubmit / onreset -->
-<div class="block">
-  <h3>oninvalid / onsubmit / onreset</h3>
-  <form onsubmit="alert('Form submitted!'); return false;" 
-        onreset="alert('Form reset!')">
-    <input type="email" required placeholder="Email">
-    <button type="submit">Submit</button>
-    <button type="reset">Reset</button>
-  </form>
+<!-- LOGIN -->
+<div id="login" class="page">
+    <h2>⚽ Player Login</h2>
+    <input type="text" id="logUser" class="form-control mb-2" placeholder="Player Name">
+    <input type="password" id="logPass" class="form-control mb-2" placeholder="Password">
+    <p id="logError" class="text-danger"></p>
+    <button class="btn btn-dark w-100" onclick="login()">Login</button>
 </div>
 
-<!-- onsearch -->
-<div class="block">
-  <h3>onsearch</h3>
-  <input type="search" 
-         onsearch="alert('Searched successfully')" 
-         placeholder="Search...">
+<!-- DASHBOARD -->
+<div id="dashboard" class="page container">
+    <h1>⚽ Football Dashboard</h1>
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <div class="card p-3">Players: 11</div>
+        </div>
+        <div class="col-md-4">
+            <div class="card p-3">Goals: 5 ⚽</div>
+        </div>
+        <div class="col-md-4">
+            <div class="card p-3">Matches: 3</div>
+        </div>
+    </div>
 </div>
 
-<!-- onselect -->
-<div class="block">
-  <h3>onselect</h3>
-  <input type="text" 
-         value="Try selecting this" 
-         onselect="alert('Text selected')">
+<!-- DOM -->
+<div id="dom" class="page">
+    <h2>⚽ Match Highlights</h2>
+
+    <button class="btn btn-success" onclick="showData()">Show Highlights</button>
+    <button class="btn btn-danger" onclick="hideData()">Hide</button>
+
+    <p id="data" style="display:none;" class="mt-3">
+        🔥 Goal by Striker in 90th minute! Crowd goes wild!
+    </p>
 </div>
+
+<script>
+// Navigation
+function showPage(pageId) {
+    document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+    document.getElementById(pageId).classList.add("active");
+}
+
+// Register
+function register() {
+    let name = document.getElementById("regName").value;
+    let email = document.getElementById("regEmail").value;
+    let pass = document.getElementById("regPass").value;
+
+    if(name === "" || email === "" || pass === "") {
+        document.getElementById("regError").innerText = "All fields required!";
+        return;
+    }
+
+    if(pass.length < 6) {
+        document.getElementById("regError").innerText = "Password must be 6+ chars";
+        return;
+    }
+
+    alert("Welcome to the Football Club!");
+    showPage('login');
+}
+
+// Login
+function login() {
+    let user = document.getElementById("logUser").value;
+    let pass = document.getElementById("logPass").value;
+
+    if(user === "" || pass === "") {
+        document.getElementById("logError").innerText = "All fields required!";
+        return;
+    }
+
+    if(pass.length < 6) {
+        document.getElementById("logError").innerText = "Password must be 6+ chars";
+        return;
+    }
+
+    alert("Kick-off! Login Successful ⚽");
+    showPage('dashboard');
+}
+
+// DOM
+function showData() {
+    document.getElementById("data").style.display = "block";
+}
+
+function hideData() {
+    document.getElementById("data").style.display = "none";
+}
+</script>
 
 </body>
 </html>
